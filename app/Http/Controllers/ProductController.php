@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\ApiResponsClass;
+use App\Http\Resources\ProductResource;
+use App\Interfaces\ProductRepositorInterface;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -10,10 +13,20 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
+    private ProductRepositorInterface $ProductRepositorInterface;
+
+    public function __construct(ProductRepositorInterface $ProductRepositorInterface)
+  {
+        $this->ProductRepositorInterface = $ProductRepositorInterface;
+
+}
+
+public function index()
+{
+    $data = $this->ProductRepositorInterface->getAllProducts();
+
+    return ApiResponsClass::sendResponse(ProductResource::collection($data),'',200);
+}
 
     /**
      * Show the form for creating a new resource.
