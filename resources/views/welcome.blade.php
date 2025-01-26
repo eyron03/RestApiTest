@@ -8,7 +8,12 @@
 </head>
 <body>
     @livewire('header')
+
+
 <hr>
+@livewire('hero')
+@livewire('footer')
+
     @vite('resources/js/app.js')
-</body>3
+</body>
 </html>
