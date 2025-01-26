@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
-use App\Interfaces\StudentInterface;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,4 +12,4 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('/products', ProductController::class);
 
-Route::apiResource('/students',StudentInterface::class);
+Route::apiResource('/students',StudentController::class);
